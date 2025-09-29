@@ -172,7 +172,7 @@ Built with **Three.js** and **modern web technologies**, this project combines i
 
 ## 🚀 Live Demo
 
-👉 [Click here to explore the live demo](#) *(Replace with your deployed link)*
+👉 [Click here to explore the live demo](#) *(https://testing-drone-web.vercel.app/)*
 
 ---
 
@@ -265,17 +265,6 @@ if (intersects.length > 0) {
 🔥 This project is a blend of **cutting-edge 3D visualization** and **practical knowledge-sharing** — a perfect demo of how technology can be both educational and engaging.
 
 ---
-
-Do you want me to also make a **LinkedIn post version** of this (shorter, catchy, professional) so you can share this project as a portfolio highlight?
-
-    if (intersects.length > 0) {
-        // If we hit something, highlight it
-        setHighlight(intersects[0].object);
-    } else {
-        // Otherwise, remove highlight
-        setHighlight(null);
-    }
-});
 
 📬 Contact
 Abhishek Yadav
