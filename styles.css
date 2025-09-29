@@ -1,0 +1,87 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a; /* Slate 900 */
+    color: #e2e8f0; /* Slate 200 */
+}
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1e293b; /* Slate 800 */
+}
+::-webkit-scrollbar-thumb {
+    background: #334155; /* Slate 600 */
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #475569; /* Slate 500 */
+}
+.glass-card {
+    background: rgba(30, 41, 59, 0.6); /* Slate 800 with transparency */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(51, 65, 85, 0.5); /* Slate 700 with transparency */
+    border-radius: 1rem;
+}
+#drone-show-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+#drone-show-canvas:active {
+    cursor: grabbing;
+}
+
+/* Consistent heights that adapt per screen */
+.three-card { height: 58vh; min-height: 340px; max-height: 640px; }
+
+/* Hero animated glow effect */
+.hero-effect {
+    pointer-events: none;
+    background: radial-gradient(800px 400px at 50% 30%, rgba(34,211,238,0.18), transparent 60%),
+                radial-gradient(600px 320px at 20% 80%, rgba(139,92,246,0.15), transparent 60%),
+                radial-gradient(700px 380px at 80% 70%, rgba(34,197,94,0.12), transparent 60%);
+    animation: glowShift 12s ease-in-out infinite alternate;
+    filter: blur(6px);
+}
+@keyframes glowShift {
+    0%   { transform: translate3d(0,0,0) scale(1); opacity: 0.9; }
+    100% { transform: translate3d(0,-2%,0) scale(1.05); opacity: 1; }
+}
+
+/* Hover effects for cards, sections, and images */
+.glass-card {
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    border-color: rgba(148, 163, 184, 0.5);
+}
+
+section {
+    transition: background-color 220ms ease, outline-color 220ms ease;
+}
+section:hover {
+    background-color: rgba(15, 23, 42, 0.04);
+}
+
+img { transition: transform 250ms ease, filter 250ms ease; }
+img:hover { transform: scale(1.02); filter: saturate(1.05); }
+
+/* Scroll reveal animation */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 600ms ease, transform 600ms ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Limit overflow only for the model viewer card */
+.model-viewer { overflow: hidden; }
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .three-card { height: 52vh; }
+}
+@media (max-width: 640px) {
+  .three-card { height: 48vh; min-height: 300px; }
+  .glass-card { padding: 12px; }
+}

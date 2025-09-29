@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drones: A Technology Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#home" class="text-2xl font-bold text-cyan-400">DroneTech</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#drone-show" class="text-slate-300 hover:text-cyan-400 transition duration-300">3D Show</a>
+                    <a href="#features" class="text-slate-300 hover:text-cyan-400 transition duration-300">Features</a>
+                    <a href="#pros-cons" class="text-slate-300 hover:text-cyan-400 transition duration-300">Pros & Cons</a>
+                    <a href="#ethics" class="text-slate-300 hover:text-cyan-400 transition duration-300">Ethics</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-slate-300 hover:text-cyan-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </nav>
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#drone-show" class="block py-2 text-slate-300 hover:text-cyan-400">3D Show</a>
+                <a href="#features" class="block py-2 text-slate-300 hover:text-cyan-400">Features</a>
+                <a href="#pros-cons" class="block py-2 text-slate-300 hover:text-cyan-400">Pros & Cons</a>
+                <a href="#ethics" class="block py-2 text-slate-300 hover:text-cyan-400">Ethics</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-24">
+        
+        <section id="home" class="text-center min-h-[60vh] flex flex-col items-center justify-center relative overflow-hidden">
+            <div class="hero-effect absolute inset-0 -z-10"></div>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">The Future is Airborne</h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl">
+                Explore the revolutionary world of unmanned aerial vehicles (UAVs). From breathtaking light shows to complex ethical questions, discover the technology that's reshaping our skies.
+            </p>
+            
+        </section>
+
+        <section id="drone-show" class="py-20">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Interactive 3D Drone Show</h2>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Click and drag on the canvas below to rotate the view. Witness a simulation of a drone light show and see how hundreds of drones can be coordinated to create art in the sky.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
+                <div class="glass-card p-4 three-card w-full relative model-viewer">
+                    <div class="absolute right-3 top-3 z-10 flex flex-col space-y-2">
+                        <button id="zoomIn" class="w-9 h-9 rounded-md bg-slate-800/70 hover:bg-slate-700 text-slate-200">+</button>
+                        <button id="zoomOut" class="w-9 h-9 rounded-md bg-slate-800/70 hover:bg-slate-700 text-slate-200">−</button>
+                    </div>
+                    <canvas id="drone-model-canvas" class="w-full h-full block"></canvas>
+                    <div id="part-info" class="mt-3 text-sm text-slate-300"></div>
+                </div>
+                <div class="glass-card p-4 three-card w-full">
+                    <canvas id="drone-show-canvas"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Core Drone Technologies</h2>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">These key features are what make modern drones so powerful and versatile.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-8 text-center">
+                    <div class="text-cyan-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">GPS & Navigation</h3>
+                    <p class="text-slate-400">Global Positioning System allows for precise location tracking, autonomous flight paths, and stable hovering.</p>
+                </div>
+                <div class="glass-card p-8 text-center">
+                    <div class="text-cyan-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">High-Resolution Cameras</h3>
+                    <p class="text-slate-400">From 4K video to thermal imaging, onboard cameras enable stunning aerial photography, inspection, and surveillance.</p>
+                </div>
+                <div class="glass-card p-8 text-center">
+                    <div class="text-cyan-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M12 6V3m0 18v-3" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Obstacle Avoidance</h3>
+                    <p class="text-slate-400">Using sensors like LiDAR or vision cameras, drones can detect and navigate around objects to prevent collisions.</p>
+                </div>
+                 <div class="glass-card p-8 text-center">
+                    <div class="text-cyan-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Extended Flight Time</h3>
+                    <p class="text-slate-400">Advances in battery technology and aerodynamics allow consumer drones to fly for 30 minutes or more on a single charge.</p>
+                </div>
+                <div class="glass-card p-8 text-center">
+                    <div class="text-cyan-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.393 8.393a15 15 0 0121.214 0" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Real-Time Transmission</h3>
+                    <p class="text-slate-400">Pilots can see a live video feed from the drone's camera (First Person View - FPV) from miles away with minimal delay.</p>
+                </div>
+                 <div class="glass-card p-8 text-center">
+                    <div class="text-cyan-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Intelligent Flight Modes</h3>
+                    <p class="text-slate-400">Automated modes like "Follow Me," "Orbit," and "Waypoint Navigation" make capturing complex cinematic shots easy.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pros-cons" class="py-20 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Advantages & Disadvantages</h2>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">Drone technology offers incredible benefits, but also comes with significant challenges and drawbacks.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-green-400">Advantages</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div><strong class="text-slate-200">Safety & Access:</strong> Perform dangerous jobs like inspecting power lines or wind turbines, and access remote areas for search and rescue.</div>
+                        </li>
+                        <li class="flex items-start">
+                             <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div><strong class="text-slate-200">Cost & Efficiency:</strong> Drastically reduce costs for aerial photography, land surveying, and crop monitoring compared to traditional methods.</div>
+                        </li>
+                         <li class="flex items-start">
+                             <svg class="w-6 h-6 text-green-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <div><strong class="text-slate-200">Data Collection:</strong> Quickly gather high-quality data for agriculture, construction, and environmental science.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-red-400">Disadvantages</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-red-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <div><strong class="text-slate-200">Privacy Concerns:</strong> The potential for unauthorized surveillance and data collection poses a major threat to personal privacy.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <svg class="w-6 h-6 text-red-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <div><strong class="text-slate-200">Security Risks:</strong> Drones can be hacked or used for malicious purposes, such as smuggling contraband or corporate espionage.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <svg class="w-6 h-6 text-red-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <div><strong class="text-slate-200">Regulatory Hurdles:</strong> Airspace regulations are complex and vary by location, creating challenges for both commercial and recreational pilots.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ethics" class="pt-20 pb-8 reveal">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">The Ethical Spectrum of Drone Use</h2>
+                <p class="mt-4 text-slate-400 max-w-2xl mx-auto">For educational purposes, it's crucial to understand how the same technology can be used for vastly different ends. The intent behind the flight is everything.</p>
+            </div>
+            <div class="space-y-8">
+                <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-cyan-400">The Good: Ethical & Beneficial Uses</h3>
+                    <p class="text-slate-400">These applications leverage drone technology to save lives, advance knowledge, and create art. They are generally seen as a net positive for society.</p>
+                    <ul class="mt-4 space-y-2 list-disc list-inside text-slate-300">
+                        <li><strong>Search & Rescue:</strong> Locating missing persons in disaster zones or wilderness areas.</li>
+                        <li><strong>Precision Agriculture:</strong> Monitoring crop health to increase yields and reduce pesticide use.</li>
+                        <li><strong>Wildlife Conservation:</strong> Tracking endangered species and monitoring for poachers without disturbing habitats.</li>
+                        <li><strong>Filmmaking & Art:</strong> Capturing breathtaking cinematic shots and creating innovative drone light shows.</li>
+                    </ul>
+                </div>
+                 <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-red-500">The Bad: Unethical & Malicious Uses</h3>
+                    <p class="text-slate-400">These applications involve using drones to cause harm, infringe upon rights, and conduct illegal activities. These are the uses that drive the need for strong regulation and counter-drone technology.</p>
+                    <ul class="mt-4 space-y-2 list-disc list-inside text-slate-300">
+                        <li><strong>Weaponization:</strong> Illegally modifying drones to carry and deploy weapons or explosives.</li>
+                        <li><strong>Smuggling:</strong> Transporting drugs, weapons, and other contraband across borders or into secure facilities like prisons.</li>
+                        <li><strong>Harassment & Stalking:</strong> Using drones to invade privacy and intimidate individuals.</li>
+                        <li><strong>Disruption of Airspace:</strong> Illegally flying near airports, causing massive travel delays and endangering passenger aircraft.</li>
+                    </ul>
+                </div>
+                 <div class="glass-card p-8">
+                    <h3 class="text-2xl font-bold mb-4 text-yellow-400">The Grey Area: Debatable Uses</h3>
+                    <p class="text-slate-400">These applications are ethically complex. Their benefit is often weighed against concerns about privacy, job displacement, and societal impact. The debate around these uses is ongoing.</p>
+                    <ul class="mt-4 space-y-2 list-disc list-inside text-slate-300">
+                        <li><strong>Mass Surveillance:</strong> Law enforcement monitoring of public spaces and protests. Where is the line between security and oppression?</li>
+                        <li><strong>Automated Delivery:</strong> Widespread package delivery could reduce emissions but might lead to significant job losses in the logistics sector.</li>
+                        <li><strong>Data Harvesting:</strong> Companies using drones to gather data (e.g., traffic patterns, property scans) without explicit consent.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900/80 border-t border-slate-800 text-slate-300">
+        <div class="container mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div>
+                <div class="flex items-center space-x-3 mb-3">
+                    <span class="text-xl font-bold">DroneTech</span>
+                </div>
+                <p class="text-slate-400 leading-relaxed">Advancing drone technology education and promoting responsible UAV innovation for a better future.</p>
+                <div class="flex items-center space-x-3 mt-5">
+                    <a href="#" class="w-10 h-10 rounded-lg bg-slate-800/70 hover:bg-slate-700 grid place-items-center transition-colors" aria-label="Discord">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.791 19.791 0 0016.558 3c-.203.364-.44.85-.602 1.232a18.27 18.27 0 00-7.913 0A7.68 7.68 0 007.44 3c-1.36.236-2.68.64-3.938 1.193C.983 7.103.318 9.82.096 12.582c1.67 2.451 4.085 4.332 6.842 5.324a14.1 14.1 0 001.164-1.875 9.77 9.77 0 01-1.844-.897l.4-.314c3.561 1.658 7.355 1.658 10.916 0l.4.314c-.592.36-1.213.663-1.864.904.346.65.732 1.283 1.155 1.888a16.9 16.9 0 006.842-5.324c-.288-3.676-1.416-6.349-3.79-8.213zM9.592 14.245c-1.116 0-2.026-1.026-2.026-2.286s.892-2.286 2.026-2.286c1.133 0 2.044 1.026 2.026 2.286 0 1.26-.892 2.286-2.026 2.286zm4.816 0c-1.116 0-2.026-1.026-2.026-2.286s.892-2.286 2.026-2.286c1.133 0 2.044 1.026 2.026 2.286 0 1.26-.892 2.286-2.026 2.286z"/></svg>
+                    </a>
+                    <a href="https://x.com/Abhiboss0077" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/70 hover:bg-slate-700 grid place-items-center transition-colors" aria-label="Twitter">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.92a8.2 8.2 0 01-2.36.65 4.1 4.1 0 001.8-2.27 8.22 8.22 0 01-2.6.99 4.1 4.1 0 00-7 3.74A11.65 11.65 0 013 4.88a4.09 4.09 0 001.27 5.46 4.07 4.07 0 01-1.86-.52v.05a4.1 4.1 0 003.29 4.02 4.1 4.1 0 01-1.85.07 4.1 4.1 0 003.83 2.85A8.22 8.22 0 012 19.54a11.62 11.62 0 006.29 1.84c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.35-.01-.53A8.35 8.35 0 0022 5.92z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abhishek-yadav-4738032b7/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-slate-800/70 hover:bg-slate-700 grid place-items-center transition-colors" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6a2 2 0 11-4 0 2 2 0 014 0z"/><path fill-rule="evenodd" d="M2 9a1 1 0 011-1h3a1 1 0 011 1v11a1 1 0 01-1 1H3a1 1 0 01-1-1V9zm7 0a1 1 0 011-1h3a1 1 0 011 1v1.528C16.41 9.556 17.66 9 19.09 9 22.03 9 23 10.905 23 14.184V20a1 1 0 01-1 1h-3a1 1 0 01-1-1v-5.184c0-1.61-.38-2.816-1.99-2.816-1.59 0-2.01 1.147-2.01 2.816V20a1 1 0 01-1 1h-3a1 1 0 01-1-1V9z" clip-rule="evenodd"/></svg>
+                    </a>
+                    <a href="mailto:pyarabachaa@gmail.com" class="w-10 h-10 rounded-lg bg-slate-800/70 hover:bg-slate-700 grid place-items-center transition-colors" aria-label="Email">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-1.4 4.25l-6.5 4.06a1 1 0 01-1 0l-6.5-4.06A1 1 0 015 6h14a1 1 0 01-.4 2.25z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Education</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li><a class="hover:text-slate-200" href="#ethics">Ethical Guidelines</a></li>
+                    <li><a class="hover:text-slate-200" href="#pros-cons">Safety Protocols</a></li>
+                    <li><a class="hover:text-slate-200" href="#ethics">Regulations</a></li>
+                    <li><a class="hover:text-slate-200" href="#features">Best Practices</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Technologies</h4>
+                <ul class="space-y-2 text-slate-400">
+                    <li><a class="hover:text-slate-200" href="#features">Drone Features</a></li>
+                    <li><a class="hover:text-slate-200" href="#drone-show">3D Simulation</a></li>
+                    <li><a class="hover:text-slate-200" href="#pros-cons">Performance Analysis</a></li>
+                    <li><a class="hover:text-slate-200" href="#features">Technical Specs</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                <p class="text-slate-400">Questions about drone technology or educational content?</p>
+                <p class="mt-3">Email: <a class="text-cyan-400 hover:text-cyan-300" href="mailto:pyarabachaa@gmail.com">pyarabachaa@gmail.com</a></p>
+                <p class="mt-1">Support: <a class="text-cyan-400 hover:text-cyan-300" href="mailto:support@dronehub.com">support@dronehub.com</a></p>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-800">
+            <div class="container mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between text-slate-500">
+                <p>&copy; 2025 DroneHub. All rights reserved. Educational content for learning purposes.</p>
+                <div class="flex items-center space-x-6 mt-3 md:mt-0">
+                    <a href="#" class="hover:text-slate-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-300">Terms of Service</a>
+                    <a href="#" class="hover:text-slate-300">Educational Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
